@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class History extends AppCompatActivity {
 
-    private static String URL_MEDHISTORY = "http://192.168.0.10/android_register_login/medHistory.php";
+    private static String URL_MEDHISTORY = "http://192.168.0.10/android_register_login/api_medEvents.php";
     private String ID;
     SessionManager sessionManager;
     List<MedicalEvents> lstMedicalEvents ;
