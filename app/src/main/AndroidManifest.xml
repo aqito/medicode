@@ -16,7 +16,8 @@
         <activity android:name=".Scan" />
         <activity android:name=".Settings" />
 
-        <activity android:name=".History">
+
+            <activity android:name=".openingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,7 +25,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".openingPage"
+        <activity android:name=".History">
             android:theme="@style/AppThemeRegist">
         </activity>
 

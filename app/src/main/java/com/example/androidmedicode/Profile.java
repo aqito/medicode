@@ -64,7 +64,7 @@ public class Profile extends AppCompatActivity {
         String _smoker = user.get(sessionManager.SMOKER);
 
         name.setText(_firstName + " " + _surname);
-        medical_condition.setText("_medical_condition");
+        medical_condition.setText(_medical_condition);
         date_of_birth.setText(_date_of_birth);
         gender.setText(_gender);
         allergies.setText(_allergies);
