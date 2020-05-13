@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,6 +43,8 @@ public class SessionManager {
     public static final String COUNTRY = "COUNTRY";
     public static final String CITY = "CITY";
     public static final String POSTCODE = "POSTCODE";
+
+    public static final String MEDEVENTS = "MEDEVENTS";
 
 
     public SessionManager(Context context) {
@@ -88,6 +91,10 @@ public class SessionManager {
         editor.apply();
     }
 
+    public void addMedEvents(String medevents){
+        editor.putString(MEDEVENTS, medevents);
+    }
+
     public boolean isLoggin() {
         return sharedPreferences.getBoolean(LOGIN, false);
     }
@@ -127,6 +134,8 @@ public class SessionManager {
         user.put(COUNTRY, sharedPreferences.getString(COUNTRY, null));
         user.put(CITY, sharedPreferences.getString(CITY, null));
         user.put(POSTCODE, sharedPreferences.getString(POSTCODE, null));
+
+        user.put(MEDEVENTS, sharedPreferences.getString(MEDEVENTS, null));
 
         return user;
     }

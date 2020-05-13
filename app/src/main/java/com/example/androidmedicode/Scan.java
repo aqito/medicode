@@ -13,11 +13,13 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Scan extends AppCompatActivity {
 
     private TextView message, scan_ID;
     SessionManager sessionManager;
+    public List<MedicalEvents> lstMedicalEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,6 @@ public class Scan extends AppCompatActivity {
 
         message = findViewById(R.id.message);
         scan_ID = findViewById(R.id.scan_ID);
-
 
         message.setText(welcomeMessage);
         scan_ID.setText(idMessage);

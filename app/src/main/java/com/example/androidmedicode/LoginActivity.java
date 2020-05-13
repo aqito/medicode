@@ -29,7 +29,6 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -143,6 +142,7 @@ public class LoginActivity extends AppCompatActivity {
                                             height, weight, systolic, diastolic, smoker,
                                             address_line1, address_line2, country, city, postcode);
 
+
                                     //go to the scan page
                                     Intent intent = new Intent(LoginActivity.this, Scan.class);
 
@@ -181,6 +181,7 @@ public class LoginActivity extends AppCompatActivity {
                         btn_login.setVisibility(View.VISIBLE);
                         Toast.makeText(LoginActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
+
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -195,8 +196,4 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
-
 }
-
-

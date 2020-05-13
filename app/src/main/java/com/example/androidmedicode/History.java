@@ -35,8 +35,7 @@ public class History extends AppCompatActivity {
     private static String URL_MEDHISTORY = "http://192.168.0.10/android_Api/api_medEvents.php";
     private String ID;
     SessionManager sessionManager;
-
-    public List<MedicalEvents> lstMedicalEvents;
+    List<MedicalEvents> lstMedicalEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +58,7 @@ public class History extends AppCompatActivity {
 
         RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, lstMedicalEvents);
 
-        myrv.setLayoutManager(new GridLayoutManager(this, 2));
+        myrv.setLayoutManager(new GridLayoutManager(this, 3));
 
         myrv.setAdapter(myAdapter);
 
@@ -133,7 +132,7 @@ public class History extends AppCompatActivity {
                                     String _long_description = object.getString("long_description").trim();
                                     String _doctor_GMC = Integer.toString(object.getInt("doctor_GMC"));
 
-                                    //adding the product to product list
+                                    //adding the MedicalEvents to MedicalEvents list
                                     lstMedicalEvents.add(new MedicalEvents(
                                             (_event_id),
                                             (_date),
@@ -144,6 +143,7 @@ public class History extends AppCompatActivity {
                                     ));
 
                                 }
+
                             } else if (successNo == 0) {
                                 //failed login error message
                                 Toast.makeText(History.this, "No events", Toast.LENGTH_SHORT).show();
@@ -163,6 +163,7 @@ public class History extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(History.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
+
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
