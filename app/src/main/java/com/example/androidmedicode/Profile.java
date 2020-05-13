@@ -25,7 +25,6 @@ public class Profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
 
-
         //initialise text view
         name = findViewById(R.id.name);
         medical_condition = findViewById(R.id.medical_condition_2);
@@ -83,7 +82,11 @@ public class Profile extends AppCompatActivity {
         Picasso.get().load(profile_URL).resize(250, 250).centerCrop().into(imageView);
 
 
+        bottomNav();
 
+    }
+
+    private void bottomNav() {
         //Initialize & assign var
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
@@ -98,22 +101,21 @@ public class Profile extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.scan:
                         startActivity(new Intent(getApplicationContext(), Scan.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.profile:
                         return true;
                     case R.id.history:
                         startActivity(new Intent(getApplicationContext(), History.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), Settings.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
             }
         });
-
     }
 }

@@ -36,7 +36,7 @@ public class Scan extends AppCompatActivity {
 
 
         String welcomeMessage = "Hi " + FirstName + " " + Surname + ",";
-        String idMessage = "Your Medicode ID is " + ID;
+        String idMessage = ID;
 
         message = findViewById(R.id.message);
         scan_ID = findViewById(R.id.scan_ID);
@@ -70,15 +70,15 @@ public class Scan extends AppCompatActivity {
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(), Profile.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.history:
                         startActivity(new Intent(getApplicationContext(), History.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), Settings.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;

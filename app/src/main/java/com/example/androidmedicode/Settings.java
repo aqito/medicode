@@ -47,15 +47,15 @@ public class Settings extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.scan:
                         startActivity(new Intent(getApplicationContext(), Scan.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.profile:
                         startActivity(new Intent(getApplicationContext(), Profile.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.history:
                         startActivity(new Intent(getApplicationContext(), History.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.settings:
                         return true;

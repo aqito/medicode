@@ -32,10 +32,11 @@ import java.util.Map;
 
 public class History extends AppCompatActivity {
 
-    private static String URL_MEDHISTORY = "http://192.168.0.10/android_register_login/api_medEvents.php";
+    private static String URL_MEDHISTORY = "http://192.168.0.10/android_Api/api_medEvents.php";
     private String ID;
     SessionManager sessionManager;
-    List<MedicalEvents> lstMedicalEvents ;
+
+    public List<MedicalEvents> lstMedicalEvents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +46,6 @@ public class History extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
 
-
-
-
         //user hashmap
         HashMap<String, String> user = sessionManager.getUserDetail();
         ID = user.get(sessionManager.ID);
@@ -55,8 +53,7 @@ public class History extends AppCompatActivity {
         lstMedicalEvents = new ArrayList<>();
 
         //method to get medical history
-        medicalHistory(ID, lstMedicalEvents);
-
+        medicalHistory(ID);
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
 
@@ -66,17 +63,18 @@ public class History extends AppCompatActivity {
 
         myrv.setAdapter(myAdapter);
 
-        bottomNav();
 
+        bottomNav();
 
     }
 
-    private void bottomNav(){
+    private void bottomNav() {
         //Initialize & assign var
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
-        //set scan as selected
+        //set profile as selected
         bottomNavigationView.setSelectedItemId(R.id.history);
+
 
         //perform itemselectedlistener
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -85,17 +83,17 @@ public class History extends AppCompatActivity {
                 switch (menuItem.getItemId()) {
                     case R.id.scan:
                         startActivity(new Intent(getApplicationContext(), Scan.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.profile:
+                        startActivity(new Intent(getApplicationContext(), Profile.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.history:
-                        startActivity(new Intent(getApplicationContext(), History.class));
-                        overridePendingTransition(0,0);
                         return true;
                     case R.id.settings:
                         startActivity(new Intent(getApplicationContext(), Settings.class));
-                        overridePendingTransition(0,0);
+                        overridePendingTransition(0, 0);
                         return true;
                 }
                 return false;
@@ -103,7 +101,7 @@ public class History extends AppCompatActivity {
         });
     }
 
-    private void medicalHistory(final String id, final List lstMedicalEvents) {
+    private void medicalHistory(final String id) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_MEDHISTORY,
                 new Response.Listener<String>() {
                     @Override
@@ -116,13 +114,13 @@ public class History extends AppCompatActivity {
                             JSONArray jsonArray = jsonObject.getJSONArray("medHistory");
 
 
-                            Log.i("tagconvertstr", "["+ jsonArray+"]");
+                            Log.i("tagconvertstr", "[" + jsonArray + "]");
 
 
                             //if login is successful
                             if (successNo > 0) {
                                 //for jsonarray length
-                                for (int i = 0; i < jsonArray.length(); i++){
+                                for (int i = 0; i < jsonArray.length(); i++) {
 
                                     //get first jsonobject
                                     JSONObject object = jsonArray.getJSONObject(i);
@@ -146,13 +144,10 @@ public class History extends AppCompatActivity {
                                     ));
 
                                 }
-                            }
-                            else if(successNo == 0) {
+                            } else if (successNo == 0) {
                                 //failed login error message
                                 Toast.makeText(History.this, "No events", Toast.LENGTH_SHORT).show();
-                            }
-
-                            else if(successNo == 404) {
+                            } else if (successNo == 404) {
                                 //failed login error message
                                 Toast.makeText(History.this, "No user with that email", Toast.LENGTH_SHORT).show();
                             }
@@ -168,27 +163,7 @@ public class History extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(History.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-//                    public void onErrorResponse(VolleyError error) {
-//
-//                        NetworkResponse response = error.networkResponse;
-//                        if (response != null && response.statusCode == 404) {
-//                            try {
-//                                String res = new String(response.data,
-//                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-//                                // Now you can use any deserializer to make sense of data
-//                                JSONObject obj = new JSONObject(res);
-//                                //use this json as you want
-//                            } catch (UnsupportedEncodingException e1) {
-//                                // Couldn't properly decode data to string
-//                                e1.printStackTrace();
-//                            } catch (JSONException e2) {
-//                                // returned data is not JSONObject?
-//                                e2.printStackTrace();
-//                            }
-//                        }
-//                    }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();

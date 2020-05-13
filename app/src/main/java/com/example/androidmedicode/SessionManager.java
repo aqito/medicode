@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class SessionManager {
 
@@ -41,8 +42,6 @@ public class SessionManager {
     public static final String COUNTRY = "COUNTRY";
     public static final String CITY = "CITY";
     public static final String POSTCODE = "POSTCODE";
-
-
 
 
     public SessionManager(Context context) {
@@ -89,19 +88,19 @@ public class SessionManager {
         editor.apply();
     }
 
-    public boolean isLoggin(){
+    public boolean isLoggin() {
         return sharedPreferences.getBoolean(LOGIN, false);
     }
 
-    public void checkLogin(){
-        if (!this.isLoggin()){
+    public void checkLogin() {
+        if (!this.isLoggin()) {
             Intent i = new Intent(context, LoginActivity.class);
             context.startActivity(i);
             ((HomeActivity) context).finish();
         }
     }
 
-    public HashMap<String, String> getUserDetail(){
+    public HashMap<String, String> getUserDetail() {
         HashMap<String, String> user = new HashMap<>();
         user.put(ID, sharedPreferences.getString(ID, null));
         user.put(FIRSTNAME, sharedPreferences.getString(FIRSTNAME, null));
@@ -132,7 +131,7 @@ public class SessionManager {
         return user;
     }
 
-    public void logout(){
+    public void logout() {
         editor.clear();
         editor.commit();
         Intent i = new Intent(context, LoginActivity.class);

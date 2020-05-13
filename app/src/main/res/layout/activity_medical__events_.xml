@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".medical_Events_Activity"
-    android:background="@drawable/background_2">
+    android:background="@drawable/background_2"
+    tools:context=".medical_Events_Activity">
 
 
     <androidx.core.widget.NestedScrollView
@@ -22,56 +21,52 @@
             android:orientation="vertical">
 
             <ImageView
+                android:id="@+id/thumbnail"
                 android:layout_width="125dp"
                 android:layout_height="170dp"
                 android:background="#2d2d2d"
-                android:id="@+id/thumbnail"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/medicalEventID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Medical event ID"
-                android:layout_marginTop="10dp"
                 android:textSize="10sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/medicalEventDate"
-                android:text="Date"
-                android:layout_marginTop="10dp"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Date"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/medicalEventShortDescription"
-                android:text="Short Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:background="#edecec"
                 android:padding="8dp"
-                android:layout_marginTop="10dp"/>
+                android:text="Short Description" />
 
             <TextView
+                android:id="@+id/medicalEventLongDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:id="@+id/medicalEventLongDescription"
-                android:textSize="18sp"
                 android:text="Long Descripton"
-                />
-
+                android:textSize="18sp" />
 
 
         </LinearLayout>
 
 
-
     </androidx.core.widget.NestedScrollView>
-
 
 
 </LinearLayout>

@@ -3,55 +3,54 @@
 
     <item
         android:id="@+id/scan"
-        android:title="Scan"
+        android:icon="@drawable/ic_scan_focus_weak_black_24dp"
         android:iconTint="@android:color/black"
-        android:icon="@drawable/ic_scan_focus_weak_black_24dp"/>
+        android:title="Scan" />
 
     <item
         android:id="@+id/profile"
+        android:icon="@drawable/blank_prof_pic"
         android:iconTint="@android:color/black"
-        android:title="Profile"
-        android:icon="@drawable/blank_prof_pic"/>
+        android:title="Profile" />
 
 
     <item
         android:id="@+id/history"
+        android:icon="@drawable/ic_history_black_24dp"
         android:iconTint="@android:color/black"
-        android:title="History"
-        android:icon="@drawable/ic_history_black_24dp"/>
+        android:title="History" />
 
     <item
         android:id="@+id/settings"
+        android:icon="@drawable/ic_settings_black_24dp"
         android:iconTint="@android:color/black"
-        android:title="Settings"
-        android:icon="@drawable/ic_settings_black_24dp"/>
+        android:title="Settings" />
 
 
-<!--    <item-->
-<!--        android:id="@+id/scan"-->
-<!--        android:title="Scan"-->
-<!--        android:iconTint="@android:color/black"-->
-<!--        android:icon="@mipmap/scan_icon"/>-->
+    <!--    <item-->
+    <!--        android:id="@+id/scan"-->
+    <!--        android:title="Scan"-->
+    <!--        android:iconTint="@android:color/black"-->
+    <!--        android:icon="@mipmap/scan_icon"/>-->
 
-<!--    <item-->
-<!--        android:id="@+id/profile"-->
-<!--        android:iconTint="@android:color/black"-->
-<!--        android:title="Profile"-->
-<!--        android:icon="@mipmap/profile_icon"/>-->
+    <!--    <item-->
+    <!--        android:id="@+id/profile"-->
+    <!--        android:iconTint="@android:color/black"-->
+    <!--        android:title="Profile"-->
+    <!--        android:icon="@mipmap/profile_icon"/>-->
 
 
-<!--    <item-->
-<!--        android:id="@+id/history"-->
-<!--        android:iconTint="@android:color/black"-->
-<!--        android:title="History"-->
-<!--        android:icon="@drawable/history_icon"/>-->
+    <!--    <item-->
+    <!--        android:id="@+id/history"-->
+    <!--        android:iconTint="@android:color/black"-->
+    <!--        android:title="History"-->
+    <!--        android:icon="@drawable/history_icon"/>-->
 
-<!--    <item-->
-<!--        android:id="@+id/settings"-->
-<!--        android:iconTint="@android:color/black"-->
-<!--        android:title="Settings"-->
-<!--        android:icon="@mipmap/settings_icon"/>-->
-
+    <!--    <item-->
+    <!--        android:id="@+id/settings"-->
+    <!--        android:iconTint="@android:color/black"-->
+    <!--        android:title="Settings"-->
+    <!--        android:icon="@mipmap/settings_icon"/>-->
 
 
 </menu>

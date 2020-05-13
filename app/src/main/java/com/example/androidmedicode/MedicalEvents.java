@@ -12,7 +12,7 @@ public class MedicalEvents {
 
     }
 
-//    constructor
+    //    constructor
     public MedicalEvents(String eventID, String date, String shortDescription, String longDescription, String doctor_GMC, int thumbnail) {
         EventID = eventID;
         Date = date;
@@ -23,7 +23,7 @@ public class MedicalEvents {
 
     }
 
-//    getter
+    //    getter
     public String getEventID() {
         return EventID;
     }
@@ -48,7 +48,7 @@ public class MedicalEvents {
         return Thumbnail;
     }
 
-//    setter
+    //    setter
     public void setEventID(String eventID) {
         EventID = eventID;
     }

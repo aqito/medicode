@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,18 +8,17 @@
     tools:context=".Profile">
 
 
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:layout_height="150dp"
-            android:src="@drawable/medicode_logo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:src="@drawable/medicode_logo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -30,312 +28,362 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo">
 
-            <RelativeLayout
-                android:orientation="vertical"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/name"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="60dp"
+                android:fontFamily="@font/allerta"
+                android:gravity="center"
+                android:text="Full Name"
+                android:textColor="@color/colorText2"
+                android:textSize="27sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/name"
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:text="Full Name"
-                        android:gravity="center"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/scan_profile_Pic"
-                        android:layout_centerHorizontal="true"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_below="@+id/name"
-                        android:layout_marginBottom="32dp" />
+            <ImageView
+                android:id="@+id/scan_profile_Pic"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@+id/name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/border_image"
+                android:cropToPadding="true"
+                android:padding="1dp"
+                android:scaleType="centerCrop" />
 
             <TextView
                 android:id="@+id/medical_condition"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/scan_profile_Pic"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Medical Condition:"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/medical_condition_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/medical_condition"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="medical_condition_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/date_of_birth"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/medical_condition_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Date of birth:"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/date_of_birth_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/date_of_birth"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="date_of_birth_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/gender"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/date_of_birth_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Gender:"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/gender_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/gender"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="gender_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/allergies"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/gender_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Allergies:"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/allergies_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/allergies"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="allergies_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/prescriptions"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/allergies_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Prescriptions"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/prescriptions_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/prescriptions"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="prescriptions_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/blood_type"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/prescriptions_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Blood_type"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/blood_type_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/blood_type"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="blood_type_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
 
             <TextView
                 android:id="@+id/height"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/blood_type_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Height"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/height_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/height"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="height_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/weight"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/height_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Weight"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/weight_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/weight"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="weight_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/systolic"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/weight_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Systolic"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/systolic_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/systolic"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="systolic_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/diastolic"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/systolic_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Diastolic"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/diastolic_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/diastolic"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="diastolic_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/smoker"
-                android:layout_width="120dp"
-                android:layout_height="40dp"
-                android:layout_marginLeft="50dp"
+                android:layout_width="180dp"
+                android:layout_height="60dp"
                 android:layout_below="@+id/diastolic_2"
+                android:layout_marginLeft="50dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center"
+                android:fontFamily="@font/allerta"
+                android:gravity="left"
                 android:text="Smoker"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/smoker_2"
                 android:layout_width="200dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="80dp"
                 android:layout_below="@+id/smoker"
+                android:layout_marginLeft="80dp"
                 android:layout_marginTop="20dp"
+                android:fontFamily="@font/allerta"
                 android:gravity="center"
                 android:text="smoker_2"
-                android:textSize="15sp"
+                android:textColor="@color/colorText2"
+                android:textSize="20sp"
                 android:textStyle="bold" />
-            </RelativeLayout>
+        </RelativeLayout>
 
     </ScrollView>
 
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
-            app:itemBackground="@android:color/white"
-            app:itemIconTint="@drawable/selector"
-            app:itemTextColor="@drawable/selector"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/menu_navigation" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        app:itemBackground="@android:color/white"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_navigation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

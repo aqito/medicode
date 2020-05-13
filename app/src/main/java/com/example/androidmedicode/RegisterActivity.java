@@ -66,7 +66,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     }
 
-    private void Register(){
+    private void Register() {
         loading.setVisibility(View.VISIBLE);
         btn_Register.setVisibility(View.GONE);
 
@@ -78,18 +78,17 @@ public class RegisterActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGISTER, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                try{
-                    Log.i("tagconvertstr", "["+response+"]");
+                try {
+                    Log.i("tagconvertstr", "[" + response + "]");
 
                     JSONObject jsonObject = new JSONObject(response);
                     String success = jsonObject.getString("success");
 
-                    if(success.equals("1")){
+                    if (success.equals("1")) {
                         Toast.makeText(RegisterActivity.this, "Register Success!", Toast.LENGTH_SHORT).show();
                         loading.setVisibility(View.GONE);
                     }
-                }
-                catch(JSONException e){
+                } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(RegisterActivity.this, "Register failed! --- " + e.toString(), Toast.LENGTH_SHORT).show();
                     loading.setVisibility(View.GONE);
@@ -104,8 +103,7 @@ public class RegisterActivity extends AppCompatActivity {
                         loading.setVisibility(View.GONE);
                         btn_Register.setVisibility(View.VISIBLE);
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();

@@ -1,4 +1,5 @@
 package com.example.androidmedicode;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -28,6 +29,7 @@ import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -37,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_login;
     private TextView link_regist;
     private ProgressBar loading;
-    private static String URL_LOGIN = "http://192.168.0.21/android_register_login/api_Login.php";
+    private static String URL_LOGIN = "http://192.168.0.21/android_Api/api_Login.php";
 
     SessionManager sessionManager;
 
@@ -45,7 +47,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
 
 
         sessionManager = new SessionManager(this);
@@ -63,29 +64,12 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (!mEmail.isEmpty() || !mPass.isEmpty()) {
                     Login(mEmail, mPass);
-                }
-                else{
+                } else {
                     email.setError("Please insert email.");
                     password.setError("Please insert password");
                 }
             }
         });
-
-//        link_regist.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-//            }
-//        });
-
-//        link_regist.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View arg0) {
-//                Intent viewIntent =
-//                        new Intent("android.intent.action.VIEW",
-//                                Uri.parse("http://www.doc.gold.ac.uk/usr/344/"));
-//                startActivity(viewIntent);
-//            }
-//        });
 
     }
 
@@ -100,7 +84,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Log.i("tagconvertstr", "["+ response+"]");
+                            Log.i("tagconvertstr", "[" + response + "]");
 
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
@@ -109,9 +93,9 @@ public class LoginActivity extends AppCompatActivity {
                             //if login is successful
                             if (success.equals("1")) {
                                 //for jsonarray length
-                                for (int i = 0; i < jsonArray.length(); i++){
+                                for (int i = 0; i < jsonArray.length(); i++) {
 
-                                    Log.i("tagconvertstr", "["+response+"]");
+                                    Log.i("tagconvertstr", "[" + response + "]");
 
                                     //get first jsonobject
                                     JSONObject object = jsonArray.getJSONObject(i);
@@ -147,25 +131,17 @@ public class LoginActivity extends AppCompatActivity {
                                     String diastolic = Integer.toString(object.getInt("diastolic"));
                                     String smoker = Integer.toString(object.getInt("smoker"));
 
-                                    if(smoker.contains("0")){
+                                    if (smoker.contains("0")) {
                                         smoker = "No";
-                                    }
-                                    else if(smoker.contains("1")){
+                                    } else if (smoker.contains("1")) {
                                         smoker = "Yes";
                                     }
-
-                                    //get values from patient
-//                                    Toast.makeText(LoginActivity.this, surname  + firstname, Toast.LENGTH_SHORT).show();
 
                                     //create session
                                     sessionManager.createSession(id, firstname, surname, email, qrcode, token,
                                             medical_condition, date_of_birth, gender, allergies, prescriptions, blood_type,
                                             height, weight, systolic, diastolic, smoker,
                                             address_line1, address_line2, country, city, postcode);
-
-//                                    Log.i("tagconvertstr", "["+sessionManager.getUserDetail()+"]");
-
-//                                    sessionManager.createSession(id, firstname, surname, email);
 
                                     //go to the scan page
                                     Intent intent = new Intent(LoginActivity.this, Scan.class);
@@ -178,15 +154,12 @@ public class LoginActivity extends AppCompatActivity {
 
                                     loading.setVisibility(View.GONE);
                                 }
-                            }
-                            else if(success.equals("0")) {
+                            } else if (success.equals("0")) {
                                 //failed login error message
                                 Toast.makeText(LoginActivity.this, "Password incorrect", Toast.LENGTH_SHORT).show();
                                 btn_login.setVisibility(View.VISIBLE);
                                 loading.setVisibility(View.GONE);
-                            }
-
-                            else if(success.equals("404")) {
+                            } else if (success.equals("404")) {
                                 //failed login error message
                                 Toast.makeText(LoginActivity.this, "No user with that email", Toast.LENGTH_SHORT).show();
                                 btn_login.setVisibility(View.VISIBLE);
@@ -208,27 +181,7 @@ public class LoginActivity extends AppCompatActivity {
                         btn_login.setVisibility(View.VISIBLE);
                         Toast.makeText(LoginActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-//                    public void onErrorResponse(VolleyError error) {
-//
-//                        NetworkResponse response = error.networkResponse;
-//                        if (response != null && response.statusCode == 404) {
-//                            try {
-//                                String res = new String(response.data,
-//                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
-//                                // Now you can use any deserializer to make sense of data
-//                                JSONObject obj = new JSONObject(res);
-//                                //use this json as you want
-//                            } catch (UnsupportedEncodingException e1) {
-//                                // Couldn't properly decode data to string
-//                                e1.printStackTrace();
-//                            } catch (JSONException e2) {
-//                                // returned data is not JSONObject?
-//                                e2.printStackTrace();
-//                            }
-//                        }
-//                    }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
@@ -242,4 +195,8 @@ public class LoginActivity extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
+
+
 }
+
+
