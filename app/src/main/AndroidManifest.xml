@@ -19,7 +19,7 @@
 
 
             <activity
-                android:name=".openingPage">
+                android:name=".History">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,7 +27,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".History"
+        <activity android:name=".openingPage"
             android:theme="@style/AppThemeRegist"></activity>
 
 
