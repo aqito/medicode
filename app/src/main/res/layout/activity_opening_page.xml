@@ -28,6 +28,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
         android:background="@drawable/btn_rounded"
+        android:visibility="gone"
         android:text="Sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +45,8 @@
         android:text="Log in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signUp"
-        app:layout_constraintVertical_bias="0.111" />
+        app:layout_constraintVertical_bias="0.195" />
 </androidx.constraintlayout.widget.ConstraintLayout>
