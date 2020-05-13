@@ -54,15 +54,6 @@ public class History extends AppCompatActivity {
         //method to get medical history
         medicalHistory(ID, lstMedicalEvents);
 
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, lstMedicalEvents);
-
-        myrv.setLayoutManager(new GridLayoutManager(this, 3));
-
-        myrv.setAdapter(myAdapter);
-
-
         bottomNav();
 
     }
@@ -143,6 +134,14 @@ public class History extends AppCompatActivity {
                                     ));
 
                                 }
+
+                                RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+
+                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(History.this, lstMedicalEvents);
+
+                                myrv.setLayoutManager(new GridLayoutManager(History.this, 2));
+
+                                myrv.setAdapter(myAdapter);
 
                             } else if (successNo == 0) {
                                 //failed login error message
