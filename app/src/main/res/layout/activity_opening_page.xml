@@ -11,37 +11,40 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="301dp"
-        android:layout_height="583dp"
+        android:layout_width="302dp"
+        android:layout_height="98dp"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintVertical_bias="0.252" />
 
     <Button
         android:id="@+id/btn_signUp"
         android:layout_width="151dp"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="72dp"
         android:background="@drawable/btn_rounded"
         android:text="Sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.546" />
+        app:layout_constraintTop_toBottomOf="@+id/logo"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:background="@drawable/btn_rounded"
+        android:layout_centerHorizontal="true"
         android:text="Log in"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_signUp"
         app:layout_constraintVertical_bias="0.111" />

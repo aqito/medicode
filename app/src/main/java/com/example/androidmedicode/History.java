@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -40,16 +42,6 @@ public class History extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
-        lstMedicalEvents = new ArrayList<>();
-
-        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-
-        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, lstMedicalEvents);
-
-        myrv.setLayoutManager(new GridLayoutManager(this, 3));
-
-        myrv.setAdapter(myAdapter);
-
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
 
@@ -60,11 +52,55 @@ public class History extends AppCompatActivity {
         HashMap<String, String> user = sessionManager.getUserDetail();
         ID = user.get(sessionManager.ID);
 
+        lstMedicalEvents = new ArrayList<>();
+
         //method to get medical history
         medicalHistory(ID, lstMedicalEvents);
 
-        //bottom navigation method.
+
+        RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
+
+        RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(this, lstMedicalEvents);
+
+        myrv.setLayoutManager(new GridLayoutManager(this, 2));
+
+        myrv.setAdapter(myAdapter);
+
         bottomNav();
+
+
+    }
+
+    private void bottomNav(){
+        //Initialize & assign var
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //set scan as selected
+        bottomNavigationView.setSelectedItemId(R.id.history);
+
+        //perform itemselectedlistener
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.scan:
+                        startActivity(new Intent(getApplicationContext(), Scan.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.profile:
+                        return true;
+                    case R.id.history:
+                        startActivity(new Intent(getApplicationContext(), History.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.settings:
+                        startActivity(new Intent(getApplicationContext(), Settings.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
+            }
+        });
     }
 
     private void medicalHistory(final String id, final List lstMedicalEvents) {
@@ -73,47 +109,84 @@ public class History extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
-                            Log.i("tagconvertstr", "["+response+"]");
+//                            Log.i("tagconvertstr", "["+ response+"]");
 
                             JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
+                            int successNo = Integer.parseInt(jsonObject.getString("success"));
                             JSONArray jsonArray = jsonObject.getJSONArray("medHistory");
 
-                            //if medical events > 0
-                            if (!success.equals("0")) {
-                                //for jsonarray length
 
+                            Log.i("tagconvertstr", "["+ jsonArray+"]");
+
+
+                            //if login is successful
+                            if (successNo > 0) {
+                                //for jsonarray length
                                 for (int i = 0; i < jsonArray.length(); i++){
+
                                     //get first jsonobject
                                     JSONObject object = jsonArray.getJSONObject(i);
-                                    int result = Integer.parseInt(success);
                                     //set variables to object.
-                                    for(int j = 0; j <= result; j++) {
-                                        String _event_id = Integer.toString(object.getInt("event_id"));
-                                        String _date = object.getString("date").trim();
-                                        String _short_description = object.getString("short_description").trim();
-                                        String _long_description = object.getString("long_description").trim();
-                                        String _doctor_GMC = Integer.toString(object.getInt("doctor_GMC"));
 
-                                        lstMedicalEvents.add(new MedicalEvents(_event_id, _date, _short_description, _long_description, _doctor_GMC, R.drawable.blank_prof_pic));
-                                    }
+                                    //medEvents
+                                    String _event_id = Integer.toString(object.getInt("event_id"));
+                                    String _date = object.getString("date").trim();
+                                    String _short_description = object.getString("short_description").trim();
+                                    String _long_description = object.getString("long_description").trim();
+                                    String _doctor_GMC = Integer.toString(object.getInt("doctor_GMC"));
+
+                                    //adding the product to product list
+                                    lstMedicalEvents.add(new MedicalEvents(
+                                            (_event_id),
+                                            (_date),
+                                            (_short_description),
+                                            (_long_description),
+                                            (_doctor_GMC),
+                                            R.drawable.blank_prof_pic
+                                    ));
+
                                 }
                             }
-                            else if(success.equals("0")){
-                                //no medical events.
+                            else if(successNo == 0) {
+                                //failed login error message
+                                Toast.makeText(History.this, "No events", Toast.LENGTH_SHORT).show();
+                            }
+
+                            else if(successNo == 404) {
+                                //failed login error message
+                                Toast.makeText(History.this, "No user with that email", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
-//                            Toast.makeText(HomeActivity.this, "Error" + e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(History.this, "Error" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(HomeActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(History.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
+//                    public void onErrorResponse(VolleyError error) {
+//
+//                        NetworkResponse response = error.networkResponse;
+//                        if (response != null && response.statusCode == 404) {
+//                            try {
+//                                String res = new String(response.data,
+//                                        HttpHeaderParser.parseCharset(response.headers, "utf-8"));
+//                                // Now you can use any deserializer to make sense of data
+//                                JSONObject obj = new JSONObject(res);
+//                                //use this json as you want
+//                            } catch (UnsupportedEncodingException e1) {
+//                                // Couldn't properly decode data to string
+//                                e1.printStackTrace();
+//                            } catch (JSONException e2) {
+//                                // returned data is not JSONObject?
+//                                e2.printStackTrace();
+//                            }
+//                        }
+//                    }
                 })
         {
             @Override
@@ -128,39 +201,6 @@ public class History extends AppCompatActivity {
         requestQueue.add(stringRequest);
 
     }
-
-
-
-    private void bottomNav() {
-        //Initialize & assign var
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        //set scan as selected
-        bottomNavigationView.setSelectedItemId(R.id.history);
-
-        //perform itemselectedlistener
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                switch (menuItem.getItemId()) {
-                    case R.id.scan:
-                        startActivity(new Intent(getApplicationContext(), Scan.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.profile:
-                        startActivity(new Intent(getApplicationContext(), Profile.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                    case R.id.history:
-                        return true;
-                    case R.id.settings:
-                        startActivity(new Intent(getApplicationContext(), Settings.class));
-                        overridePendingTransition(0, 0);
-                        return true;
-                }
-                return false;
-            }
-        });
-    }
 }
+
 

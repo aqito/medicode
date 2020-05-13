@@ -24,10 +24,6 @@ public class Scan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scan);
 
-
-
-
-
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
 

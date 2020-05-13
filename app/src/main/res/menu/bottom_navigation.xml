@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/nav_scan"
         android:icon="@drawable/ic_scan_focus_weak_black_24dp"
         android:iconTint="@android:color/black"
         android:title="Scan"/>
-
     <item
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile_outline_black_24dp"
@@ -24,5 +22,4 @@
         android:iconTint="@android:color/black"
         android:icon="@drawable/ic_settings_black_24dp"
         android:title="Settiings"/>
-
 </menu>
