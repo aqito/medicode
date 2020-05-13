@@ -143,7 +143,7 @@ public class SessionManager {
     public void logout() {
         editor.clear();
         editor.commit();
-        Intent i = new Intent(context, LoginActivity.class);
+        Intent i = new Intent(context, openingPage.class);
         context.startActivity(i);
         ((Settings) context).finish();
     }
