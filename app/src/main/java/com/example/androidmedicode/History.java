@@ -254,30 +254,32 @@ public class History extends AppCompatActivity {
             if (pd.isShowing()) {
                 pd.dismiss();
             }
-            try{
+            try {
 
 //            Log.i("tagconvertstr", "[" + result + "]");
 
                 JSONArray jsonArray = new JSONArray(result);
                 for (int i = 0; i < jsonArray.length(); i++) {
 
-                        JSONObject object = jsonArray.getJSONObject(i);
+                    JSONObject object = jsonArray.getJSONObject(i);
 
-                        String _event_id = Integer.toString(object.getInt("event_id"));
-                        String _date = object.getString("date").trim();
-                        String _short_description = object.getString("short_description").trim();
-                        String _long_description = object.getString("long_description").trim();
-                        String _doctor_GMC = Integer.toString(object.getInt("doctor_GMC"));
+                    String _event_id = Integer.toString(object.getInt("event_id"));
+                    String _date = object.getString("date").trim();
+                    String _short_description = object.getString("short_description").trim();
+                    String _long_description = object.getString("long_description").trim();
+                    String _doctor_GMC = Integer.toString(object.getInt("doctor_GMC"));
 
-                        //adding the MedicalEvents to MedicalEvents list
-                        lstMedicalEvents.add(new MedicalEvents(
-                                (_event_id),
-                                (_date),
-                                (_short_description),
-                                (_long_description),
-                                (_doctor_GMC),
-                                R.drawable.blank_prof_pic
-                        ));
+                    String _date_Trunc = _date.substring(0,10);//trim date
+
+                    //adding the MedicalEvents to MedicalEvents list
+                    lstMedicalEvents.add(new MedicalEvents(
+                            ("Event ID: " + _event_id),
+                            (_date_Trunc),
+                            (_short_description),
+                            (_long_description),
+                            ("Doctor GMC: " + _doctor_GMC),
+                            R.drawable.blank_prof_pic
+                    ));
                 }
                 RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
 
