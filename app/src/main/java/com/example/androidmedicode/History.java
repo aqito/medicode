@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -43,6 +44,7 @@ public class History extends AppCompatActivity {
 
     private static String URL_MEDHISTORY = "http://192.168.0.10/android_Api/api_medEvents.php";
     private String ID;
+    private TextView Empty_View;
     SessionManager sessionManager;
     List<MedicalEvents> lstMedicalEvents;
     ProgressDialog pd;
@@ -54,6 +56,8 @@ public class History extends AppCompatActivity {
 
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
+
+        Empty_View = findViewById(R.id.empty_view);
 
         //user hashmap
         HashMap<String, String> user = sessionManager.getUserDetail();
@@ -269,7 +273,7 @@ public class History extends AppCompatActivity {
                     String _long_description = object.getString("long_description").trim();
                     String _doctor_GMC = Integer.toString(object.getInt("doctor_GMC"));
 
-                    String _date_Trunc = _date.substring(0,10);//trim date
+                    String _date_Trunc = _date.substring(0, 10);//trim date
 
                     //adding the MedicalEvents to MedicalEvents list
                     lstMedicalEvents.add(new MedicalEvents(
@@ -281,13 +285,19 @@ public class History extends AppCompatActivity {
                             R.drawable.blank_prof_pic
                     ));
                 }
-                RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
 
-                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(History.this, lstMedicalEvents);
+                if (!(lstMedicalEvents.isEmpty())) {
+                    RecyclerView myrv = findViewById(R.id.recyclerview_id);
 
-                myrv.setLayoutManager(new GridLayoutManager(History.this, 3));
+                    RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(History.this, lstMedicalEvents);
 
-                myrv.setAdapter(myAdapter);
+                    myrv.setLayoutManager(new GridLayoutManager(History.this, 3));
+
+                    myrv.setAdapter(myAdapter);
+                } else {
+                    Empty_View.setVisibility(View.VISIBLE);
+                }
+
             } catch (JSONException e) {
                 e.printStackTrace();
 //                Toast.makeText(History.this, "Error" + e.toString(), Toast.LENGTH_SHORT).show();
