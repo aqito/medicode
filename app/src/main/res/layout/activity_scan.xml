@@ -113,6 +113,7 @@
         android:adjustViewBounds="true"
         app:itemBackground="@android:color/white"
         app:itemIconTint="@drawable/selector"
+        android:background="@android:color/white"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

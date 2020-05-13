@@ -53,7 +53,7 @@ public class History extends AppCompatActivity {
         lstMedicalEvents = new ArrayList<>();
 
         //method to get medical history
-        medicalHistory(ID);
+        medicalHistory(ID, lstMedicalEvents);
 
         RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
 
@@ -101,7 +101,7 @@ public class History extends AppCompatActivity {
         });
     }
 
-    private void medicalHistory(final String id) {
+    private void medicalHistory(final String id, final List lstMedicalEvents) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_MEDHISTORY,
                 new Response.Listener<String>() {
                     @Override

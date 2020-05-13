@@ -55,6 +55,12 @@ public class Scan extends AppCompatActivity {
         Picasso.get().load(profile_URL).resize(250, 250).centerCrop().into(imageView2);
 
 
+        bottomNav();
+    }
+
+
+    private void bottomNav() {
+
         //Initialize & assign var
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_2"
-    android:padding="8dp"
     tools:context=".History">
 
     <ImageView
@@ -22,7 +21,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview_id"
         android:layout_width="match_parent"
-        android:layout_height="493dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
+        android:background="@android:color/white"
         app:itemBackground="@android:color/white"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
