@@ -11,7 +11,7 @@
         android:id="@+id/profile"
         android:icon="@drawable/blank_prof_pic"
         android:iconTint="@android:color/black"
-        android:title="Profile" />
+        android:title="Clinical Records" />
 
 
     <item

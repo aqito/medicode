@@ -28,7 +28,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="72dp"
         android:background="@drawable/btn_rounded"
-        android:visibility="gone"
         android:text="Sign up"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

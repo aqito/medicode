@@ -12,25 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeLogin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".medical_Events_Activity"></activity>
-
+        <activity android:name=".signUp"></activity>
+        <activity android:name=".medical_Events_Activity" />
         <activity android:name=".Scan" />
         <activity android:name=".Settings" />
-
-
-            <activity
-                android:name=".History">
+        <activity android:name=".openingPage">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".openingPage"
-            android:theme="@style/AppThemeRegist"></activity>
-
-
+        <activity
+            android:name=".History"
+            android:theme="@style/AppThemeRegist" />
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppThemeRegist" />

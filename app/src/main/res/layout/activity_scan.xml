@@ -60,7 +60,7 @@
         android:layout_below="@+id/profile_Pic"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Your medicode ID is : "
+        android:text="Your Medicode ID is : "
         android:textColor="@color/colorText2"
         android:textSize="20sp"
         android:textStyle="bold"

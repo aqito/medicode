@@ -9,7 +9,7 @@
         android:id="@+id/nav_profile"
         android:icon="@drawable/ic_profile_outline_black_24dp"
         android:iconTint="@android:color/black"
-        android:title="Profile" />
+        android:title="Clinical Records" />
 
     <item
         android:id="@+id/nav_history"

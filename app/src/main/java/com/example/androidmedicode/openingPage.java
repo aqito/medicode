@@ -27,5 +27,12 @@ public class openingPage extends AppCompatActivity {
             }
         });
 
+        btn_signUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(openingPage.this, signUp.class));
+            }
+        });
+
     }
 }
