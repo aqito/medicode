@@ -36,7 +36,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText email, password;
     private Button btn_login;
-    private TextView link_regist;
     private ProgressBar loading;
     private static String URL_LOGIN = "http://192.168.0.21/android_Api/api_Login.php";
 
@@ -60,21 +59,16 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String mEmail = email.getText().toString();
                 String mPass = password.getText().toString();
-
-                if (!mEmail.isEmpty() && !mPass.isEmpty()) {
+                if (!mEmail.isEmpty() || !mPass.isEmpty()) {
                     Login(mEmail, mPass);
-                } else if(mEmail.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Email required", Toast.LENGTH_SHORT).show();
+                } else {
                     email.setError("Please insert email.");
-                } else if(mPass.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Password required", Toast.LENGTH_SHORT).show();
                     password.setError("Please insert password");
                 }
             }
         });
 
     }
-
 
     private void Login(final String email, final String password) {
         loading.setVisibility(View.VISIBLE);
@@ -184,7 +178,6 @@ public class LoginActivity extends AppCompatActivity {
                         btn_login.setVisibility(View.VISIBLE);
                         Toast.makeText(LoginActivity.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-
                 }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {

@@ -65,9 +65,6 @@ public class History extends AppCompatActivity {
 
         lstMedicalEvents = new ArrayList<>();
 
-        //method to get medical history
-//        medicalHistory(ID, lstMedicalEvents);
-
         new JsonTask().execute("http://www.doc.gold.ac.uk/usr/344/medical-events-api?patient_id=" + ID);
 
 
@@ -107,91 +104,6 @@ public class History extends AppCompatActivity {
             }
         });
     }
-
-//    private void medicalHistory(final String id, final List lstMedicalEvents) {
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_MEDHISTORY,
-//                new Response.Listener<String>() {
-//                    @Override
-//                    public void onResponse(String response) {
-//                        try {
-//
-//                            JSONObject jsonObject = new JSONObject(response);
-//                            int successNo = Integer.parseInt(jsonObject.getString("success"));
-//                            JSONArray jsonArray = jsonObject.getJSONArray("medHistory");
-//
-//
-//                            Log.i("tagconvertstr", "[" + jsonArray + "]");
-//
-//
-//                            //if login is successful
-//                            if (successNo > 0) {
-//                                //for jsonarray length
-//                                for (int i = 0; i < jsonArray.length(); i++) {
-//
-//                                    //get first jsonobject
-//                                    JSONObject object = jsonArray.getJSONObject(i);
-//                                    //set variables to object.
-//
-//                                    //medEvents
-//                                    String _event_id = Integer.toString(object.getInt("event_id"));
-//                                    String _date = object.getString("date").trim();
-//                                    String _short_description = object.getString("short_description").trim();
-//                                    String _long_description = object.getString("long_description").trim();
-//                                    String _doctor_GMC = Integer.toString(object.getInt("doctor_GMC"));
-//
-//                                    //adding the MedicalEvents to MedicalEvents list
-//                                    lstMedicalEvents.add(new MedicalEvents(
-//                                            (_event_id),
-//                                            (_date),
-//                                            (_short_description),
-//                                            (_long_description),
-//                                            (_doctor_GMC),
-//                                            R.drawable.blank_prof_pic
-//                                    ));
-//
-//                                }
-//
-//                                RecyclerView myrv = (RecyclerView) findViewById(R.id.recyclerview_id);
-//
-//                                RecyclerViewAdapter myAdapter = new RecyclerViewAdapter(History.this, lstMedicalEvents);
-//
-//                                myrv.setLayoutManager(new GridLayoutManager(History.this, 3));
-//
-//                                myrv.setAdapter(myAdapter);
-//
-//                            } else if (successNo == 0) {
-//                                //failed login error message
-//                                Toast.makeText(History.this, "No events", Toast.LENGTH_SHORT).show();
-//                            } else if (successNo == 404) {
-//                                //failed login error message
-//                                Toast.makeText(History.this, "No user with that email", Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                        } catch (JSONException e) {
-//                            e.printStackTrace();
-//                            Toast.makeText(History.this, "Error" + e.toString(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        Toast.makeText(History.this, "Error" + error.toString(), Toast.LENGTH_SHORT).show();
-//                    }
-//
-//                }) {
-//            @Override
-//            protected Map<String, String> getParams() throws AuthFailureError {
-//                Map<String, String> params = new HashMap<>();
-//                params.put("id", id);
-//                return params;
-//            }
-//        };
-//
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        requestQueue.add(stringRequest);
-//
-//    }
 
 
     private class JsonTask extends AsyncTask<String, String, String> {
@@ -260,8 +172,6 @@ public class History extends AppCompatActivity {
             }
             try {
 
-//            Log.i("tagconvertstr", "[" + result + "]");
-
                 JSONArray jsonArray = new JSONArray(result);
                 for (int i = 0; i < jsonArray.length(); i++) {
 
@@ -300,8 +210,8 @@ public class History extends AppCompatActivity {
 
             } catch (JSONException e) {
                 e.printStackTrace();
-//                Toast.makeText(History.this, "Error" + e.toString(), Toast.LENGTH_SHORT).show();
                 Log.i("tagconvertstr", "[" + e.toString() + "]");
+                Empty_View.setVisibility(View.VISIBLE);
             }
         }
     }

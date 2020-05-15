@@ -25,18 +25,17 @@
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logo">
-    </androidx.recyclerview.widget.RecyclerView>
+        app:layout_constraintTop_toBottomOf="@+id/logo"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
         android:id="@+id/empty_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="@font/allerta"
-        android:visibility="gone"
         android:gravity="center"
         android:text="No Medical events for this patient."
-        android:textSize="35sp" />
+        android:textSize="35sp"
+        android:visibility="gone" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
